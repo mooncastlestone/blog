@@ -1,0 +1,26 @@
+@import "styles/utils";
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $gray-scale-04;
+}
+
+.logoWrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}

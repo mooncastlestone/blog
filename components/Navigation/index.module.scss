@@ -1,0 +1,38 @@
+@import "styles/utils";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.menuList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+}
+
+.menuListItem a {
+  text-decoration: none;
+  color: $gray-scale-08;
+}
+
+.asideList {
+  display: flex;
+  column-gap: 10px;
+}
+
+.asideListItem button {
+  position: relative;
+  display: flex;
+  background-color: transparent;
+  border: none;
+  width: 20px;
+  height: 20px;
+}
+
+.asideListItem image {
+  width: 100%;
+  height: 100%;
+}
