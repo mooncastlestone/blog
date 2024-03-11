@@ -1,6 +1,6 @@
-import { Post } from 'app/components/Post';
+import { Post } from 'components/Post';
+import { getPostBySlug } from 'data-access';
 import { serialize } from "next-mdx-remote/serialize";
-import { getPostBySlug } from "utils/markdown";
 
 type PostPageProps = {
   params: {
@@ -9,13 +9,13 @@ type PostPageProps = {
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const { content, data } = getPostBySlug(params.slug);
+  const { title, description, content } = getPostBySlug(params.slug);
   const serializedContent = await serialize(content);
 
   return (
     <main>
-      <h1>{data.title}</h1>
-      <p>{data.description}</p>
+      <h1>{title}</h1>
+      <p>{description}</p>
       <Post content={serializedContent} />
     </main>
   );
