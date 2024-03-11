@@ -10,3 +10,5 @@ export type PostForList = Post & {
 export type PostForDetail = Post & {
   content: string;
 }
+
+export type Locale = 'ko' | 'en';

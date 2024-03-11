@@ -9,7 +9,7 @@ type PostPageProps = {
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const { title, description, content } = getPostBySlug(params.slug);
+  const { title, description, content } = getPostBySlug(decodeURIComponent(params.slug));
   const serializedContent = await serialize(content);
 
   return (
