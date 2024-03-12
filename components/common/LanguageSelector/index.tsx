@@ -5,6 +5,7 @@ import languageIcon from "public/icons/language.svg";
 import classNames from 'classnames/bind';
 import { LANGUAGES } from 'utils/constants';
 import { Locale } from 'utils/types';
+import { useOutsideClick } from 'hooks';
 
 const cx = classNames.bind(styles);
 
@@ -14,7 +15,7 @@ type LanguageSelectorProps = {
 
 export const LanguageSelector = ({ onSelect }: LanguageSelectorProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleRef = useRef<HTMLDivElement>(null);
+  const toggleButtonRef = useRef<HTMLDivElement>(null);
 
   const handleButtonClick = () => {
     setIsOpen(!isOpen)
@@ -25,22 +26,12 @@ export const LanguageSelector = ({ onSelect }: LanguageSelectorProps) => {
     setIsOpen(false);
   }
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (toggleRef.current && !toggleRef.current.contains(event.target as Node)) {
-        console.log(toggleRef);
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+  useOutsideClick(toggleButtonRef, () => {
+    setIsOpen(false);
+  });
 
   return (
-    <div ref={toggleRef} className={cx("container")}>
+    <div ref={toggleButtonRef} className={cx("container")}>
       <button onClick={handleButtonClick} className={cx("toggleButton")}>
         <Image src={languageIcon} alt="language" fill />
       </button>
