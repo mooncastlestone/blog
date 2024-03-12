@@ -16,3 +16,8 @@ export type PostForDetail = Post & {
 }
 
 export type Locale = 'ko' | 'en';
+
+export type Language = {
+  code: Locale;
+  text: string;
+}
