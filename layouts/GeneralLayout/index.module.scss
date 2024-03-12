@@ -6,10 +6,12 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
+  max-width: 700px;
   padding: 0 10px;
+  margin: 0 auto;
 }
 
-.inner {
+.header {
   display: flex;
   flex-direction: column;
   row-gap: 30px;
