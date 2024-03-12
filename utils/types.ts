@@ -1,6 +1,8 @@
 export type Post = {
   title: string;
   description: string;
+  category: string;
+  createdAt: string;
 }
 
 export type PostForList = Post & {

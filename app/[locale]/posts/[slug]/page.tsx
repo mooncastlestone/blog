@@ -1,5 +1,6 @@
-import { Post } from 'components/Post';
+import { PostDetail } from 'components/PostDetail';
 import { getPostBySlug } from 'data-access';
+import { getCurrentLocale } from 'locales/server';
 import { serialize } from "next-mdx-remote/serialize";
 
 type PostPageProps = {
@@ -9,14 +10,15 @@ type PostPageProps = {
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const { title, description, content } = getPostBySlug(decodeURIComponent(params.slug));
+  const locale = getCurrentLocale();
+  const { title, description, content } = getPostBySlug(decodeURIComponent(params.slug), locale);
   const serializedContent = await serialize(content);
 
   return (
     <main>
       <h1>{title}</h1>
       <p>{description}</p>
-      <Post content={serializedContent} />
+      <PostDetail content={serializedContent} />
     </main>
   );
 }
