@@ -25,3 +25,18 @@
   width: 100px;
   height: 100px;
 }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 50px 0;
+  font-size: 14px;
+  color: $gray-scale-07;
+}
+
+.githubId {
+  color: $gray-scale-07;
+  text-decoration: underline;
+}

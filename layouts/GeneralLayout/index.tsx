@@ -22,6 +22,9 @@ export const GeneralLayout = ({ children, hasNavigation = true }: GeneralLayoutP
         {hasNavigation && <Navigation />}
       </header>
       {children}
+      <footer className={cx("footer")}>
+        <p>Copyright 2024. <a href="https://github.com/mooon3356" target="_blank" className={cx("githubId")}>@mooon3356</a> all rights reserved.</p>
+      </footer>
     </main>
   );
 };
