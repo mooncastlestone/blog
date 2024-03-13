@@ -1,4 +1,3 @@
-import RootLayout from 'app/layout';
 import styles from './index.module.scss';
 import classNames from 'classnames/bind';
 import { getAllPosts } from 'data-access';

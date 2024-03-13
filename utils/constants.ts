@@ -6,7 +6,7 @@ export const POSTS_DIRECTORY_PATH = path.join(process.cwd(), "posts");
 export const LANGUAGES: Language[] = [
   {
     code: 'ko',
-    text: '한글'
+    text: '한국어'
   },
   {
     code: 'en',

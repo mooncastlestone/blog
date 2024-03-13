@@ -15,8 +15,19 @@
 
 .menuListItem a {
   text-decoration: none;
-  color: $gray-scale-08;
+  color: $gray-scale-07;
   font-size: 15px;
+
+  &.active {
+    color: $gray-scale-08;
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  // TODO: 작업실 페이지 완료되면 삭제
+  &.disabled {
+    pointer-events: none;
+  }
 }
 
 .asideList {
@@ -28,15 +39,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
-  transition: background-color 0.2s ease-in-out;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: $gray-scale-01;
-  }
 }
 
 .changeThemeButton {
