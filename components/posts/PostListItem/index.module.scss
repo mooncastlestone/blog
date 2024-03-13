@@ -1,0 +1,55 @@
+@import "styles/utils";
+
+.container {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  padding: 15px;
+  row-gap: 15px;
+  border-bottom: 1px solid $gray-scale-03;
+}
+
+.hashtag {
+  font-size: 14px;
+  color: $gray-scale-07;
+  border-radius: 10px;
+}
+
+.headlineGroup {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  text-decoration: none;
+  width: 100%;
+
+  &:hover {
+    .title {
+      text-decoration: underline;
+    }
+  }
+}
+
+.title {
+  color: $gray-scale-08;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 24px;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-clamp: 3;
+  font-size: 15px;
+  line-height: 24px;
+  color: $gray-scale-08;
+}
+
+.createdAt {
+  font-size: 14px;
+  color: $gray-scale-07;
+}
