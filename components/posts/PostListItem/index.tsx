@@ -11,7 +11,7 @@ export const PostListItem = ({ title, description, fileName, category, createdAt
 
   return (
     <li className={cx("container")}>
-      <span className={cx("hashtag")}>{category}</span>
+      <span className={cx("category")}>{category}</span>
       <Link href={`/posts/${fileName}`} className={cx("headlineGroup")}>
         <h1 className={cx("title")}>{title}</h1>
         <p className={cx("description")}>{description}</p>

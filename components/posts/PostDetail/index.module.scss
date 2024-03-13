@@ -5,19 +5,28 @@
   flex-direction: column;
   row-gap: 20px;
   width: 100%;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0 15px;
 }
 
 .header {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: relative;
+}
+
+.category {
+  color: $gray-scale-07;
 }
 
 .title {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: bold;
   color: $gray-scale-09;
+
+  @include desktop {
+    font-size: 32px;
+  }
 }
 
 .headerSubInfo {
@@ -27,8 +36,13 @@
 }
 
 .author {
-  font-size: 16px;
   color: $gray-scale-08;
+  font-size: 16px;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .createdAt {
@@ -37,97 +51,8 @@
   font-size: 14px;
 }
 
-/* 기본 마크다운 스타일 */
-.markdown {
-  color: $gray-scale-08;
-  line-height: 1.6;
-  max-width: 800px;
-  margin: 0 auto;
-  // padding: 10px;
-}
-
-.markdown {
-  /* 헤더 스타일 */
-  h1,
-  h2,
-  h3 {
-    margin: 0;
-    padding: 3px 2px;
-    font-weight: bold;
-    line-height: 1.3;
-  }
-
-  h1 {
-    font-size: 32px;
-  }
-
-  h2 {
-    font-size: 24px;
-  }
-
-  h3 {
-    font-size: 20px;
-  }
-
-  /* 단락 스타일 */
-  p {
-    margin-top: 0;
-    margin-bottom: 16px;
-    font-size: 18px;
-  }
-
-  /* 목록 스타일 */
-  ul,
-  ol {
-    padding-left: 32px;
-    margin-top: 0;
-    margin-bottom: 16px;
-    list-style: square;
-  }
-
-  li {
-    margin-top: 4px;
-  }
-
-  /* 코드 스타일 */
-  pre {
-    margin-top: 0;
-    margin-bottom: 16px;
-    padding: 16px;
-    background-color: #f6f8fa;
-    border-radius: 3px;
-  }
-
-  code {
-    font-family: Consolas, "Courier New", monospace;
-    padding: 3.2px 6.4px;
-    margin: 0;
-    font-size: 85%;
-    background-color: #f6f8fa;
-    border-radius: 3px;
-  }
-
-  /* 링크 스타일 */
-  a {
-    color: $gray-scale-10;
-    font-weight: bold;
-    text-decoration: underline;
-  }
-
-  /* 인용문 스타일 */
-  blockquote {
-    margin: 0;
-    padding-top: 3px;
-    padding-left: 16px;
-    color: $gray-scale-07;
-    border-left: 4px solid $gray-scale-03;
-  }
-
-  /* 이미지 스타일 */
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
+.languageSelectorWrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

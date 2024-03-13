@@ -1,0 +1,5 @@
+@mixin desktop {
+  @media (min-width: $laptop-contents-width) {
+    @content;
+  }
+}

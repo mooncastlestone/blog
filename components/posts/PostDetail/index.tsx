@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import style from "./index.module.scss";
 import { MDXRemote } from 'next-mdx-remote';
 import { PostForDetail } from 'utils/types';
+import Link from 'next/link';
 
 const cx = classNames.bind(style);
 
@@ -13,10 +14,11 @@ export function PostDetail({ title, category, createdAt, content }: PostDetailPr
   return (
     <main className={cx("container")}>
       <header className={cx("header")}>
+        <span className={cx("category")}>{category}</span>
         <h1 className={cx("title")}>{title}</h1>
         <div className={cx("headerSubInfo")}>
-          <span className={cx("author")}>Seongseok Moon</span>
-          <span className={cx("createdAt")}>Feb 11, 2024</span>
+          <Link href="/" className={cx("author")}>문성석</Link>
+          <span className={cx("createdAt")}>2024년 1월 31일</span>
         </div>
       </header>
       <section className={cx("markdown")}>
