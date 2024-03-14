@@ -1,5 +1,5 @@
 export default {
-  'hello': 'Hello',
-  'hello.world': 'Hello world!',
-  'welcome': 'Hello {name}!'
+  "navigation.menuListItem.posts": "Writing",
+  "navigation.menuListItem.lab": "Lab",
+  "postDetail.headerSubInfo.author": "Seongseok Moon",
 } as const

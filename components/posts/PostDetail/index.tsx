@@ -5,19 +5,22 @@ import style from "./index.module.scss";
 import { MDXRemote } from 'next-mdx-remote';
 import { PostForDetail } from 'utils/types';
 import Link from 'next/link';
+import { useScopedI18n } from 'locales/client';
 
 const cx = classNames.bind(style);
 
 type PostDetailProps = PostForDetail;
 
 export function PostDetail({ title, category, createdAt, content }: PostDetailProps) {
+  const scopedT = useScopedI18n("postDetail");
+
   return (
     <main className={cx("container")}>
       <header className={cx("header")}>
         <span className={cx("category")}>{category}</span>
         <h1 className={cx("title")}>{title}</h1>
         <div className={cx("headerSubInfo")}>
-          <Link href="/" className={cx("author")}>문성석</Link>
+          <Link href="/" className={cx("author")}>{scopedT("headerSubInfo.author")}</Link>
           <span className={cx("createdAt")}>{createdAt}</span>
         </div>
       </header>

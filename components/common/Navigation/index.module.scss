@@ -20,7 +20,7 @@
 
   &.active {
     color: $gray-scale-08;
-    text-decoration: underline;
+    border-bottom: 1px solid $black;
     font-weight: 500;
   }
 
