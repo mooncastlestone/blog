@@ -23,5 +23,8 @@
     "react-dom": "^18.2.0",
     "sass": "^1.71.1",
     "typescript": "^5.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.27"
   }
 }
