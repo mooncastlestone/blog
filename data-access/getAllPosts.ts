@@ -13,7 +13,7 @@ export const getAllPosts = (locale: Locale): PostForList[] => {
     .readdirSync(targetDirectoryPath)
     .filter((path) => /\.mdx?$/.test(path));
 
-  return postFileNames.map((fileName) => {
+  const mappedPosts = postFileNames.map((fileName) => {
     const source = fs.readFileSync(path.join(targetDirectoryPath, fileName))
     const { data } = matter(source);
     const { title, description, createdAt, category } = data as PostForList;
@@ -26,4 +26,6 @@ export const getAllPosts = (locale: Locale): PostForList[] => {
       fileName: fileName.replace(/\.mdx?$/, "")
     }
   });
+
+  return mappedPosts.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 };
