@@ -16,7 +16,7 @@ export const PostListItem = ({ title, description, fileName, category, createdAt
         <h1 className={cx("title")}>{title}</h1>
         <p className={cx("description")}>{description}</p>
       </Link>
-      <span className={cx('createdAt')}>2024년 3월 11일</span>
+      <span className={cx('createdAt')}>{createdAt}</span>
     </li>
   )
 }

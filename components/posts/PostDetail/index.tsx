@@ -18,7 +18,7 @@ export function PostDetail({ title, category, createdAt, content }: PostDetailPr
         <h1 className={cx("title")}>{title}</h1>
         <div className={cx("headerSubInfo")}>
           <Link href="/" className={cx("author")}>문성석</Link>
-          <span className={cx("createdAt")}>2024년 1월 31일</span>
+          <span className={cx("createdAt")}>{createdAt}</span>
         </div>
       </header>
       <section className={cx("markdown")}>

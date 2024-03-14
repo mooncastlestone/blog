@@ -3,6 +3,7 @@ import path from "path";
 import matter from 'gray-matter';
 import { Locale, PostForList } from 'utils/types';
 import { POSTS_DIRECTORY_PATH } from 'utils/constants';
+import { formatDate } from 'utils/formatDate';
 
 // 모든 포스트 데이터 가져오기
 export const getAllPosts = (locale: Locale): PostForList[] => {
@@ -20,7 +21,7 @@ export const getAllPosts = (locale: Locale): PostForList[] => {
     return {
       title,
       description,
-      createdAt,
+      createdAt: formatDate(new Date(createdAt), locale),
       category,
       fileName: fileName.replace(/\.mdx?$/, "")
     }

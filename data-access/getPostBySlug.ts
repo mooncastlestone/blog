@@ -5,6 +5,7 @@ import matter from 'gray-matter';
 import { POSTS_DIRECTORY_PATH } from 'utils/constants';
 import { Locale, Post, PostForDetail } from 'utils/types';
 import { serialize } from 'next-mdx-remote/serialize';
+import { formatDate } from 'utils/formatDate';
 
 // 포스트 상세 데이터 가져오기
 export const getPostBySlug = async (slug: string, locale: Locale): Promise<PostForDetail> => {
@@ -21,7 +22,7 @@ export const getPostBySlug = async (slug: string, locale: Locale): Promise<PostF
   return {
     title,
     category,
-    createdAt,
+    createdAt: formatDate(new Date(createdAt), locale),
     content: serializedContent
   }
 }
