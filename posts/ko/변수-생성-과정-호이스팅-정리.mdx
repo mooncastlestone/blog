@@ -70,9 +70,14 @@ var test = 1;
 
 자바스크립트 엔진이 코드를 평가하는 과정에서 var test;가 실행 컨텍스트가 관리하는 스코프에 저장이 된다. 이때 test 변수는 선언, 초기화 단계가 동시에 진행되어 undefined 값을 가지고 있다.
 
-![](https://fastly.picsum.photos/id/1081/740/400.jpg?grayscale&hmac=Ah3jgeBgUFg8TFlSfNC0rLOVJbjIq6P3ppDbanvbsUU)
+<br />
 
-평가 과정이 끝나면, 이미 실행되었던 코드들을 제외한 나머지 코드들을 실행한다. 실행되는 순서대로 예시 코드를 나타내 보자면 다음과 같다.
+![execution context](https://res.cloudinary.com/dr4ka7tze/image/upload/v1710393257/%EB%B8%94%EB%A1%9C%EA%B7%B8/%EB%B3%80%EC%88%98_%EC%83%9D%EC%84%B1_%EA%B3%BC%EC%A0%95_%ED%98%B8%EC%9D%B4%EC%8A%A4%ED%8C%85_%EC%A0%95%EB%A6%AC/ko_1.png)
+
+<br />
+
+평가 과정이 끝나면, 이미 실행되었던 코드들을 제외한 나머지 코드들을 실행한다. 실행되는 순서대로 예시 코드를 나타내 보자면
+다음과 같다.
 
 ```jsx
 var test; -> 선언, 초기화 단계를 마쳐서 undefined를 가지고 있음

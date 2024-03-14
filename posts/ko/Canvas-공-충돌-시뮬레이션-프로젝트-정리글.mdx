@@ -9,7 +9,7 @@ createdAt: 2022-08-01
 
 ## 결과물
 
-![](https://fastly.picsum.photos/id/1081/740/400.jpg?grayscale&hmac=Ah3jgeBgUFg8TFlSfNC0rLOVJbjIq6P3ppDbanvbsUU)
+![preview](https://res.cloudinary.com/dr4ka7tze/image/upload/v1657829505/%EB%B8%94%EB%A1%9C%EA%B7%B8/Canvas_%EA%B3%B5_%EC%B6%A9%EB%8F%8C_%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%EC%85%98_%EC%A0%95%EB%A6%AC%EA%B8%80/preview.gif)
 
 <br />
 <br />
@@ -50,6 +50,8 @@ export default class Utils {
   }
 }
 ```
+
+<br />
 
 이후 공들을 생성하는 makeBalls 함수에서 필요한 랜덤한 숫자들을 얻을 수 있었다.
 
@@ -98,10 +100,19 @@ Math.random 메소드를 사용하여 0과 1 사이의 난수를 생성하고, �
 여기서 구한 단위 벡터를 방향으로 하여 랜덤한 방향으로 공을 보낼 수 있었다.
 
 <br />
+<br />
 
 ### 3) 공 충돌 기능 구현 방법
 
-![](https://fastly.picsum.photos/id/1081/740/400.jpg?grayscale&hmac=Ah3jgeBgUFg8TFlSfNC0rLOVJbjIq6P3ppDbanvbsUU)
+<br />
+
+<img
+  src="https://res.cloudinary.com/dr4ka7tze/image/upload/v1710395258/%EB%B8%94%EB%A1%9C%EA%B7%B8/Canvas_%EA%B3%B5_%EC%B6%A9%EB%8F%8C_%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%EC%85%98_%EC%A0%95%EB%A6%AC%EA%B8%80/collision%20formula.png"
+  width="300"
+  alt="collision formula"
+/>
+
+<br />
 
 1. 두 공의 벡터를 이용하여 un(unit normal)과 ut(unit tangent)를 구한다.
 2. 만약 unit normal의 길이가 두 공의 반지름을 더한 값과 작거나 같아진다면, 충돌로 인식
@@ -110,6 +121,7 @@ Math.random 메소드를 사용하여 0과 1 사이의 난수를 생성하고, �
 5. 3번과 4번에서 계산한 충돌 이후 반사되는 스칼라, 속도를 결합하여 벡터 생성
 6. 각각의 공에 새롭게 생성된 벡터를 할당하여 다시 반사된 방향으로 이동
 
+<br />
 <br />
 
 ## **참고**

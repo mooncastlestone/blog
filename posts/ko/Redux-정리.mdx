@@ -37,7 +37,7 @@ Model-View-Controller의 약자이며, 웹사이트를 개발할 때 3가지 �
 
 작동되는 흐름은 아래와 같다.
 
-![](https://fastly.picsum.photos/id/1081/740/400.jpg?grayscale&hmac=Ah3jgeBgUFg8TFlSfNC0rLOVJbjIq6P3ppDbanvbsUU)
+![MVC pattern](https://res.cloudinary.com/dr4ka7tze/image/upload/v1710394589/%EB%B8%94%EB%A1%9C%EA%B7%B8/Redux_%EC%A0%95%EB%A6%AC/ko_2.png)
 
 <br />
 
@@ -55,8 +55,11 @@ Model-View-Controller의 약자이며, 웹사이트를 개발할 때 3가지 �
 
 Facebook에서 MVC 디자인 패턴의 단점을 보안하기 위해 개발한 웹 어플리케이션을 위한 디자인 패턴이다. **단방향 데이터 흐름**이라는 특징을 가지고 있다. 작동되는 흐름은 다음과 같다.
 
-![](https://fastly.picsum.photos/id/1081/740/400.jpg?grayscale&hmac=Ah3jgeBgUFg8TFlSfNC0rLOVJbjIq6P3ppDbanvbsUU)
+<br />
 
+![Flux pattern](https://res.cloudinary.com/dr4ka7tze/image/upload/v1710394479/%EB%B8%94%EB%A1%9C%EA%B7%B8/Redux_%EC%A0%95%EB%A6%AC/ko_1.png)
+
+<br />
 <br />
 
 1. View에서 이벤트가 발생한다.
@@ -66,6 +69,8 @@ Facebook에서 MVC 디자인 패턴의 단점을 보안하기 위해 개발한 �
 5. 상태 변경이 완료되면 스토어는 자신을 구독하고 있는 컨트롤러 뷰에게 변경이 된 것을 알린다.
 6. 상태가 변경된 것을 알게된 컨트롤러 뷰들은 변경된 상태를 스토어에게 요청을 보낸다.
 7. 스토어가 새로운 상태를 넘겨주면, 컨트롤러 뷰는 자신 아래의 모든 뷰에게 새로운 상태를 렌더링하라고 알린다.
+
+<br />
 
 위와 같은 과정으로 데이터들이 단방향으로 흐르게 된다. 따라서 데이터 변화를 MVC 패턴보다 훨씬 예측하기 쉽게 개발을 진행할 수 있다.
 
