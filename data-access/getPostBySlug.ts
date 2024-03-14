@@ -6,6 +6,7 @@ import { POSTS_DIRECTORY_PATH } from 'utils/constants';
 import { Locale, Post, PostForDetail } from 'utils/types';
 import { serialize } from 'next-mdx-remote/serialize';
 import { formatDate } from 'utils/formatDate';
+import { serializeMdx } from 'lib/markdown';
 
 // 포스트 상세 데이터 가져오기
 export const getPostBySlug = async (slug: string, locale: Locale): Promise<PostForDetail> => {
@@ -16,7 +17,7 @@ export const getPostBySlug = async (slug: string, locale: Locale): Promise<PostF
 
   const { content, data } = matter(source);
 
-  const serializedContent = await serialize(content);
+  const serializedContent = await serializeMdx(content);
   const { title, category, createdAt } = data as Post;
 
   return {

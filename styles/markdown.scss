@@ -62,21 +62,22 @@
     list-style: decimal;
   }
 
+  figure {
+    background-color: #212127;
+    border-radius: 10px;
+  }
+
   /* 코드 스타일 */
   pre {
     margin: 16px 0;
-    padding: 16px;
-    background-color: #f6f8fa;
-    border-radius: 3px;
+    padding: 16px 20px;
     overflow-x: scroll;
   }
 
   code {
-    font-family: Consolas, "Courier New", monospace;
+    font-family: monospace;
+    font-size: 14px;
     padding: 3.2px 6.4px;
-    margin: 0;
-    font-size: 85%;
-    background-color: #f6f8fa;
     border-radius: 3px;
   }
 
