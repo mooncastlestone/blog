@@ -1,0 +1,194 @@
+---
+title: Redux 정리
+description: Redux는 가장 많이 사용되는 상태 관리 라이브러리이다. 리덕스를 사용하면 생성하게 될 컴포넌트들의 상태 관련 로직들을 다른 파일들로 분리시켜서 더욱 효율적으로 관리할 수 있으며 글로벌 상태 관리도 손쉽게 할 수 있는 장점이 있다.
+category: 상태 관리
+createdAt: 2024-03-11
+---
+
+![thumbnail](https://fastly.picsum.photos/id/1081/740/400.jpg?grayscale&hmac=Ah3jgeBgUFg8TFlSfNC0rLOVJbjIq6P3ppDbanvbsUU)
+
+<br />
+
+## Redux란?
+
+Redux는 가장 많이 사용되는 상태 관리 라이브러리이다. 리덕스를 사용하면 생성하게 될 컴포넌트들의 상태 관련 로직들을 다른 파일들로 분리시켜서 더욱 효율적으로 관리할 수 있으며 글로벌 상태 관리도 손쉽게 할 수 있는 장점이 있다.
+
+<br />
+<br />
+
+## Redux 데이터 흐름
+
+Redux는 기존에 있던 데이터 흐름을 관리하는 방식인 MVC 패턴이 아닌, **Flux 디자인 패턴 구조**를 가지고 있다. MVC와 Flux는 어떤 차이점을 가지고 있을까? 우선 MVC에 대해서 먼저 알아보자.
+
+<br />
+<br />
+
+### 1) MVC란?
+
+Model-View-Controller의 약자이며, 웹사이트를 개발할 때 3가지 형태로 역할을 나누어 개발하는 소프트웨어 디자인 패턴이다.
+
+<br />
+
+- **Model** : 어플리케이션에 필요한 데이터의 형식이나 구조를 관리한다.
+- **View** : 사용자에게 보여지는 모든 부분을 담당한다.
+- **Controller** : 변화하는 데이터를 관리한다.
+
+<br />
+
+작동되는 흐름은 아래와 같다.
+
+![](https://fastly.picsum.photos/id/1081/740/400.jpg?grayscale&hmac=Ah3jgeBgUFg8TFlSfNC0rLOVJbjIq6P3ppDbanvbsUU)
+
+<br />
+
+이 MVC 패턴의 큰 특징 중 하나는 **'양방향 데이터 흐름'** 이다. 모델이 변경되면 뷰 또한 변하고, 뷰에서 변경이 일어나면, 모델 또한 변한다.
+이런 양방향 데이터 흐름은 설계가 쉽고 간단하게 코드를 작성할 수 있는 장점이 있다.
+
+<br />
+
+다만, 어플리케이션의 규모가 커지면 데이터 흐름 파악이 힘들어지게 되고, 디버깅이 어려워져서 많은 시간이 소비된다. 이러한 MVC
+디자인 패턴의 단점을 보안하기 위해 Facebook에서 개발한 새로운 디자인 패턴이 Flux이다.
+
+<br />
+
+### 2) Flux란?
+
+Facebook에서 MVC 디자인 패턴의 단점을 보안하기 위해 개발한 웹 어플리케이션을 위한 디자인 패턴이다. **단방향 데이터 흐름**이라는 특징을 가지고 있다. 작동되는 흐름은 다음과 같다.
+
+![](https://fastly.picsum.photos/id/1081/740/400.jpg?grayscale&hmac=Ah3jgeBgUFg8TFlSfNC0rLOVJbjIq6P3ppDbanvbsUU)
+
+<br />
+
+1. View에서 이벤트가 발생한다.
+2. 액션 생성자는 개발자가 설정한 액션을 생성하고 dispatcher에 넘겨준다.
+3. dispatcher는 들어온 액션의 순서에 따라 스토어로 보낸다.
+4. 액션을 받은 스토어는 액션에 맞게 상태를 변경한다.
+5. 상태 변경이 완료되면 스토어는 자신을 구독하고 있는 컨트롤러 뷰에게 변경이 된 것을 알린다.
+6. 상태가 변경된 것을 알게된 컨트롤러 뷰들은 변경된 상태를 스토어에게 요청을 보낸다.
+7. 스토어가 새로운 상태를 넘겨주면, 컨트롤러 뷰는 자신 아래의 모든 뷰에게 새로운 상태를 렌더링하라고 알린다.
+
+위와 같은 과정으로 데이터들이 단방향으로 흐르게 된다. 따라서 데이터 변화를 MVC 패턴보다 훨씬 예측하기 쉽게 개발을 진행할 수 있다.
+
+<br />
+<br />
+
+## Redux가 필요한 이유
+
+컴포넌트가 적은 프로젝트라면, 부모 컴포넌트에 있는 state를 한두 번에 걸쳐 사용할 수 있다. 그러나 컴포넌트가 많은 프로젝트라면, 부모 컴포넌트로부터 state를 받아오기까지 많은 컴포넌트를 거쳐 state를 받아와야해서 상태 관리의 복잡성이 커지게 된다. Redux를 사용하면 이 문제를 해결할 수 있다.
+
+<br />
+
+Redux를 사용하여 특정한 공간에 state를 저장하면, 다이렉트로 데이터들을 받아올 수 있다.
+
+<br />
+<br />
+
+## **Redux에서 사용되는 키워드들의 특징**
+
+일반적으로 Redux를 사용할 때 필요한 4가지 키워드들을 살펴보자.
+
+<br />
+
+### 1) Action
+
+- 상태에 어떠한 변화가 필요하게 될 때, 액션을 발생시킨다.
+- 하나의 객체로 표현이 된다.
+
+```jsx
+//예시 코드
+
+{
+  type: "ORDER",
+  drink: {
+    menu: "Americano",
+    size:"Grande",
+    iced: false
+  }
+}
+```
+
+액션 객체는 type을 필수적으로 가지고 있어야 하며, 그 외의 값들은 개발자 마음대로 가능하다.
+
+<br />
+
+### 2) Action Creator
+
+- 액션을 만드는 함수이다.
+- 뷰에서 이벤트가 발생하여 액션을 생성할 때, 액션을 좀 더 편하게 생성하기 위해 사용된다.
+
+<br />
+
+### 3) Store
+
+- 상태가 관리되는 오직 하나의 공간.
+- Redux에서는 한 애플리케이션 당 하나의 store를 만들게 된다.
+- store 안에는, 현재의 앱 상태와, reducer 함수가 들어가있고, 추가적으로 내장 함수들이 있다.
+
+<br />
+
+### 4) Reducer
+
+- 변화를 일으키는 함수
+- 현재 State와 Action을 이용하여 새로운 state를 만들어냄
+- Reducer에서는 전달받아온 Action 객체의 타입에 따라 다른 동작을 수행한다. 그에 따라서 새로운 State를 생성한다.
+
+<br />
+<br />
+
+## Redux의 3가지 원칙
+
+### 1) Single source of truth
+
+- 동일한 데이터는 항상 같은 곳에서 데이터를 가지고 온다. 데이터를 저장하는 하나뿐인 스토어가 있다.
+
+<br />
+
+### 2) State is read-only
+
+- 기존에는 setState를 사용하여 state 값을 변경해줬었다. Redux에서는 Action 이라는 함수를 사용하여 state 값을 변경한다.
+
+<br />
+
+### 3) Changes are made with pure functions
+
+- 변경은 순수 함수로만 가능하다.
+
+<br />
+<br />
+
+## Redux vs Context API
+
+리덕스는 전역 상태를 관리할 때 굉장히 효과적이다. 물론 리덕스를 사용하는 것만이 유일한 해결책은 아니다. 리액트에서 제공하는 Context API를 사용하여도 전역 상태 관리를 할 수 있다. 다만 리덕스는 아래와 같은 장점들을 가지고 있다.
+
+<br />
+
+### 1) 미들웨어
+
+리덕스에는 미들웨어라는 개념이 존재한다. 미들웨어를 사용하면 액션 객체가 리듀서에서 처리되기 전에 우리가 원하는 작업들을 수행할 수 있다. 미들웨어는 주로 비동기 작업을 처리할 때 많이 사용된다.
+
+<br />
+
+### 2) 유용한 함수와 hooks
+
+useSelector, useDispatch, useStore와 같은 hooks들을 사용하여 손쉽게 상태를 조회하거나 액션을 디스패치 할 수 있는 장점이 있다.
+
+<br />
+
+### 3) 하나의 커다란 상태
+
+Context API를 사용해서 글로벌 상태를 관리할 때는 기능별로 context를 만들어서 사용하는 것이 일반적이다. 반면 리덕스에서는 모든 글로벌 상태를 하나의 상태 객체에 넣어서 사용하기 때문에 여러 context를 생성하는 수고로움을 덜 수 있다.
+
+<br />
+<br />
+
+## 참고
+
+<a href="https://react.vlpt.us/redux/" target="_blank">
+  벨로퍼트와 함께하는 모던 리액트
+</a>
+<a href="https://code-cartoons.com/a-cartoon-guide-to-flux-6157355ab207" target="_blank">
+  A cartoon guide to Flux
+</a>
+<a href="https://medium.com/@rhodunda/mvc-design-pattern-fe76175a01de" target="_blank">
+  MVC design pattern
+</a>
