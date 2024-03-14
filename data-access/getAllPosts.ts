@@ -16,13 +16,14 @@ export const getAllPosts = (locale: Locale): PostForList[] => {
   const mappedPosts = postFileNames.map((fileName) => {
     const source = fs.readFileSync(path.join(targetDirectoryPath, fileName))
     const { data } = matter(source);
-    const { title, description, createdAt, category } = data as PostForList;
+    const { title, description, createdAt, category, thumbnailUrl } = data as PostForList;
 
     return {
       title,
       description,
-      createdAt: formatDate(new Date(createdAt), locale),
       category,
+      thumbnailUrl,
+      createdAt: formatDate(new Date(createdAt), locale),
       fileName: fileName.replace(/\.mdx?$/, "")
     }
   });

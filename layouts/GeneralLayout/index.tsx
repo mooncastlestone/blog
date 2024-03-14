@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import styles from './index.module.scss';
 import classnames from 'classnames/bind';
 import Image from 'next/image';
-import logo from "public/images/logo_black.png"
+import logo from "public/images/logo.png"
 import { Navigation } from 'components/common/Navigation';
 
 const cx = classnames.bind(styles);
@@ -17,7 +17,7 @@ export const GeneralLayout = ({ children, hasNavigation = true }: GeneralLayoutP
     <main className={cx('container')}>
       <header className={cx("header")}>
         <div className={cx("logoWrapper")}>
-          <Image src={logo} alt="logo" layout="fill" />
+          <Image src={logo} alt="logo" fill />
         </div>
         {hasNavigation && <Navigation />}
       </header>

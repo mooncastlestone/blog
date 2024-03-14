@@ -2,12 +2,13 @@ import { MDXRemoteProps } from 'next-mdx-remote';
 
 export type Post = {
   title: string;
+  description: string;
   category: string;
   createdAt: string;
+  thumbnailUrl: string;
 }
 
 export type PostForList = Post & {
-  description: string;
   fileName: string;
 }
 
