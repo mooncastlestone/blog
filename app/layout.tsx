@@ -1,4 +1,3 @@
-import { getCurrentLocale } from 'locales/server';
 import { Metadata } from 'next';
 import "styles/global.scss";
 
@@ -9,15 +8,14 @@ export const metadata: Metadata = {
   }
 }
 
+// TODO: dynamic lang attribute based on the locale of the page
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const currentLocale = getCurrentLocale();
-
   return (
-    <html lang={currentLocale}>
+    <html lang="ko">
       <body>
         {children}
       </body>
