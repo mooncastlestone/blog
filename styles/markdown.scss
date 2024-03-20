@@ -3,7 +3,6 @@
 /* 기본 마크다운 스타일 */
 .markdown {
   width: 100%;
-  max-width: 800px;
   margin: 0 auto;
   color: #313131;
   line-height: 1.6;
@@ -38,6 +37,7 @@
   p {
     font-size: 16px;
     line-height: 30px;
+    word-break: break-all;
   }
 
   strong {
@@ -49,8 +49,12 @@
   ol {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 7px;
     padding-left: 18px;
+  }
+
+  li {
+    line-height: 28px;
   }
 
   ul {
@@ -75,7 +79,7 @@
 
   code {
     font-family: monospace;
-    font-size: 14px;
+    font-size: 13px;
     padding: 3.2px 6.4px;
     border-radius: 3px;
   }
