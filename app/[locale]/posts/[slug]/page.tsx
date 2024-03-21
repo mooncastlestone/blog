@@ -1,6 +1,7 @@
 import { PostDetail } from 'components/posts/PostDetail';
 import { getPostBySlug } from 'data-access';
 import { Metadata } from 'next';
+import { AUTHORS } from 'utils/constants';
 import { Locale } from 'utils/types';
 
 type PostPageProps = {
@@ -30,7 +31,7 @@ export async function generateMetadata(
   return {
     title,
     description,
-    authors: [{ name: "Moon.log" }],
+    authors: [{ name: AUTHORS[locale] }],
     openGraph: {
       images: [
         {

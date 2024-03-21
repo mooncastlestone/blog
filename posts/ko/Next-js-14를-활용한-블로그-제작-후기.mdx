@@ -248,14 +248,14 @@ export default function PostsPage({ params }: PostPageProps) {
 // locales/en.ts
 
 export default {
-  "navigation.title": "Moon.log",
+  "navigation.title": "기록소",
 } as const
 
 // components/Navigation
 
 const Navigation = () => {
   const scopedT = useScopedI18n("navigation");
-  const title = scopedT("title"); // Moon.log
+  const title = scopedT("title"); // 기록소
 }
 ```
 
@@ -322,6 +322,11 @@ export default Page {
 Next.js 14에서는 동적 메타 데이터 설정을 위한 **generateMetadata** 함수 제공한다. 나는 이번 프로젝트에서 설정된 언어에 따라 메타 데이터도 변경이 필요했어서 모든 데이터를 이 함수 작업하였다.
 
 ```jsx
+const TITLES = {
+  ko: "기록소",
+  en: "Programmer's Log",
+} as const;
+
 const DESCRIPTIONS = {
   ko: "소프트웨어 개발과 독서를 통해 ...",
   en: "Exploring personal growth ..."
@@ -346,7 +351,7 @@ export async function generateMetadata(
 // const post = await getPostBySlug(decodeURIComponent(slug), locale);
 
   return {
-    title: "Moon.log",
+    title: TITLES[locale],
     description: DESCRIPTIONS[locale],
     openGraph: {
       type: 'website',

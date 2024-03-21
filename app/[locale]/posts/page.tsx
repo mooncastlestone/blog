@@ -5,6 +5,7 @@ import { GeneralLayout } from 'layouts/GeneralLayout';
 import { PostListItem } from 'components/posts/PostListItem';
 import { Metadata } from 'next';
 import { Locale } from 'utils/types';
+import { TITLES } from 'utils/constants';
 
 const cx = classNames.bind(styles);
 
@@ -41,7 +42,7 @@ export async function generateMetadata(
   const locale = params.locale;
 
   return {
-    title: "Moon.log",
+    title: TITLES[locale],
     description: DESCRIPTIONS[locale],
     openGraph: {
       type: 'website',
