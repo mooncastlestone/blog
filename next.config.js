@@ -1,9 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  ...(process.env.NODE_ENV === "production" && {
-    output: "export",
-  }),
-};
+const nextConfig = {};
 
 module.exports = {
   async redirects() {
