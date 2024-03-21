@@ -23,7 +23,7 @@ export const GeneralLayout = ({ children, hasNavigation = true }: GeneralLayoutP
       </header>
       {children}
       <footer className={cx("footer")}>
-        <p>Copyright 2024. <a href="https://github.com/mooon3356" target="_blank" className={cx("githubId")}>@mooon3356</a> all rights reserved.</p>
+        <p>Copyright 2024. <a href="https://github.com/mooncastlestone" target="_blank" className={cx("githubId")}>@mooncastlestone</a> all rights reserved.</p>
       </footer>
     </main>
   );
