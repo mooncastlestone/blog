@@ -11,6 +11,16 @@
   border-bottom: 1px solid $gray-scale-03;
 }
 
+.container.en {
+  .title {
+    font-size: 18px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+}
+
 .category {
   font-size: 14px;
   color: $gray-scale-07;
