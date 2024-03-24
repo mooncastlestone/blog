@@ -29,10 +29,10 @@ export const Navigation = () => {
     <nav className={cx("container")}>
       <ul className={cx("menuList")}>
         <li className={cx("menuListItem")}>
-          <Link href="/posts" className={cx((pathname === "/posts" || pathname === "/en/posts") && "active")}>{scopedT("menuListItem.posts")}</Link>
+          <Link href="/posts" className={cx(pathname.includes("/posts") && "active")}>{scopedT("menuListItem.posts")}</Link>
         </li>
         <li className={cx("menuListItem")}>
-          <Link href="/" className={cx(pathname === "/lab" && "active", "disabled")}>{scopedT("menuListItem.lab")}</Link>
+          <Link href="/" className={cx(pathname.includes("/lab") && "active", "disabled")}>{scopedT("menuListItem.lab")}</Link>
         </li>
       </ul>
       <aside>

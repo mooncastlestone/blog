@@ -1,4 +1,4 @@
-import { MDXRemoteProps } from 'next-mdx-remote';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 export type Post = {
   title: string;
@@ -13,7 +13,7 @@ export type PostForList = Post & {
 }
 
 export type PostForDetail = Post & {
-  content: MDXRemoteProps;
+  content: MDXRemoteSerializeResult;
 }
 
 export type Locale = 'ko' | 'en';
