@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@next/third-parties": "^14.1.4",
     "classnames": "^2.5.1",
     "date-fns": "^3.4.0",
     "gray-matter": "^4.0.3",

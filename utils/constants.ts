@@ -29,3 +29,5 @@ export const AUTHORS = {
   ko: "문성석",
   en: "Seongseok Moon",
 } as const;
+
+export const GA_TRACKING_ID = "G-1SBFZCNRDM";

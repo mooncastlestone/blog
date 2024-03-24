@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import "styles/global.scss";
-import { TITLES } from 'utils/constants';
+import { GA_TRACKING_ID, TITLES } from 'utils/constants';
 import { Locale } from 'utils/types';
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 type RootLayoutProps = {
   children: React.ReactNode;
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         {children}
+        <GoogleAnalytics gaId={GA_TRACKING_ID} />
       </body>
     </html>
   )
