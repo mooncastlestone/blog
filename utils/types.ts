@@ -10,6 +10,7 @@ export type Post = {
 
 export type PostForList = Post & {
   fileName: string;
+  published: boolean;
 }
 
 export type PostForDetail = Post & {

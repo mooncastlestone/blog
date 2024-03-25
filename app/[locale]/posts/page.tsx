@@ -27,9 +27,11 @@ export default function PostsPage({ params }: PostPageProps) {
     <GeneralLayout>
       <ul className={cx("list")}>
         {posts.map((post) => {
-          return ((
-            <PostListItem key={post.fileName}  {...post} />
-          ))
+          if (post.published) {
+            return <PostListItem key={post.fileName}  {...post} />
+          } else {
+            return <></>;
+          }
         })}
       </ul >
     </GeneralLayout>
