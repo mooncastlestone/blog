@@ -30,4 +30,6 @@ export const AUTHORS = {
   en: "Seongseok Moon",
 } as const;
 
+export const LOGO_URL = "https://res.cloudinary.com/dr4ka7tze/image/upload/v1711462636/blog_logo.png";
+
 export const GA_TRACKING_ID = "G-1SBFZCNRDM";

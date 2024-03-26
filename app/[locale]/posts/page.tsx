@@ -5,7 +5,7 @@ import { GeneralLayout } from 'layouts/GeneralLayout';
 import { PostListItem } from 'components/posts/PostListItem';
 import { Metadata } from 'next';
 import { Locale } from 'utils/types';
-import { TITLES } from 'utils/constants';
+import { LOGO_URL, TITLES } from 'utils/constants';
 
 const cx = classNames.bind(styles);
 
@@ -47,8 +47,16 @@ export async function generateMetadata(
     title: TITLES[locale],
     description: DESCRIPTIONS[locale],
     openGraph: {
+      siteName: TITLES[locale],
       type: 'website',
       description: DESCRIPTIONS[locale],
+      images: [{ url: LOGO_URL }]
     },
+    twitter: {
+      title: TITLES[locale],
+      description: DESCRIPTIONS[locale],
+      images: [{ url: LOGO_URL }],
+      card: "summary_large_image"
+    }
   }
 }

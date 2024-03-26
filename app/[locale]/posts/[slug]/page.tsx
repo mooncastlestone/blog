@@ -33,6 +33,19 @@ export async function generateMetadata(
     description,
     authors: [{ name: AUTHORS[locale] }],
     openGraph: {
+      title,
+      description,
+      type: 'article',
+      images: [
+        {
+          url: thumbnailUrl,
+        }
+      ]
+    },
+    twitter: {
+      title,
+      description,
+      card: 'summary_large_image',
       images: [
         {
           url: thumbnailUrl,
