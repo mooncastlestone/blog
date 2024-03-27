@@ -7,6 +7,8 @@ createdAt: 2024-03-26
 published: true
 ---
 
+import Codepen from "components/posts/Codepen";
+
 ![thumbnail](https://fastly.picsum.photos/id/387/700/400.jpg?grayscale&hmac=-O5tCzIA1jyEDahvU2BCcTjYJXyY6fIZ_R8A_3YDz4c)
 
 <br />
@@ -103,29 +105,8 @@ function handleIntersection(entries) {
 
 ## 결과물 예시
 
-- 트리거 발생 시, 리스트에 아이템을 추가하는 코드 예시
+- 리스트 최하단 도달 시, 아이템들을 추가하는 무한 스크롤 코드 예시
 
-```js showLineNumbers
-  // 아이템 추가 함수
-function addItem() {
-  const list = document.querySelector(".list");
+<br />
 
-  for (let i = 0; i < 5; i++) {
-    const item = document.createElement("li");
-    item.classList.add("item");
-    item.textContent = `아이템 ${list.children.length + 1}`;
-    list.appendChild(item);
-  }
-}
-
-// Intersection Observer 콜백 함수
-function handleIntersection(entries) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      addItem();
-    }
-  });
-}
-
-...
-```
+<Codepen slug="QWPgJwr" />
