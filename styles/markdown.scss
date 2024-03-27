@@ -27,6 +27,12 @@
     font-size: 24px;
   }
 
+  /* 문단 적용된 링크 스타일링 */
+  h2 a {
+    color: inherit;
+    font-weight: bold;
+  }
+
   h3 {
     margin-top: 2px;
     line-height: 32px;
