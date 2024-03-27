@@ -118,4 +118,41 @@
     font-weight: 400;
     text-decoration: underline;
   }
+
+  /* 코드 블록 스타일 */
+  [data-rehype-pretty-code-figure] code {
+    counter-reset: line;
+  }
+
+  [data-rehype-pretty-code-figure] [data-line]::before {
+    counter-increment: line;
+  }
+
+  [data-line-numbers] > [data-line]::before {
+    content: counter(line);
+
+    display: inline-block;
+    width: 1rem;
+    margin-right: 1rem;
+    text-align: right;
+    color: gray;
+  }
+
+  [data-line-numbers-max-digits="2"] > [data-line]::before {
+    width: 1rem;
+  }
+
+  [data-line-numbers-max-digits="3"] > [data-line]::before {
+    width: 2rem;
+  }
+
+  code[data-language="javascript"] span[data-line] {
+    background-color: rgba(135, 131, 120, 0.15);
+    border-radius: 4px;
+    padding: 0.2em 0.4em;
+
+    span {
+      color: $red !important;
+    }
+  }
 }
