@@ -3,6 +3,7 @@ import "styles/global.scss";
 import { GA_TRACKING_ID, TITLES } from 'utils/constants';
 import { Locale } from 'utils/types';
 import { GoogleAnalytics } from '@next/third-parties/google'
+import NextTopLoader from 'nextjs-toploader';
 
 type RootLayoutProps = {
   children: React.ReactNode;
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
+        <NextTopLoader color="#48464d" />
         {children}
         <GoogleAnalytics gaId={GA_TRACKING_ID} />
       </body>
