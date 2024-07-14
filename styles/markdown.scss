@@ -35,7 +35,7 @@
 
   h3 {
     margin-top: 2px;
-    line-height: 32px;
+    line-height: 36px;
     font-size: 20px;
   }
 
@@ -43,11 +43,11 @@
   p {
     font-size: 16px;
     line-height: 30px;
-    word-break: break-all;
+    word-break:keep-all;
   }
 
   strong {
-    font-weight: bold;
+    font-weight: 600;
   }
 
   /* 목록 스타일 */
@@ -91,10 +91,11 @@
   }
 
   /* 링크 스타일 */
-  a {
+  a, u {
     color: $gray-scale-10;
     font-weight: bold;
     text-decoration: underline;
+    text-underline-position: under;
   }
 
   /* 인용문 스타일 */

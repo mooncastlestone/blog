@@ -1,0 +1,539 @@
+---
+title: "AWS EC2: A Step-by-Step Guide"
+description: As a developer, deploying an Express server to the cloud might seem challenging, but with AWS EC2, it’s quite straightforward. In this guide, I’ll show you how to deploy your Express server on an EC2 instance.
+category: Infra
+thumbnailUrl: https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926429/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/1_kyplo6.png
+createdAt: 2024-03-25
+published: true
+---
+
+![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926429/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/1_kyplo6.png)
+
+<br />
+
+As a developer, deploying an Express server to the cloud might seem challenging, but with AWS EC2, it’s quite straightforward.
+
+<br />
+This guide will take you through the process of deploying your Express server on an EC2 instance, step by step.
+
+<br />
+<br />
+<br />
+
+## Table of Contents
+
+1. <strong>Why Use AWS EC2?</strong>
+2. <strong>Requirements</strong>
+3. <strong>Step 1: Set Up Your EC2 instance</strong>
+
+   a. Region
+
+   b. Basic Settings For EC2
+
+   c. Security Group
+
+   d. Storage
+
+   e. Launch Your EC2 Server
+
+4. <strong>Step 2: Connect to Instance and Set Up an Elastic Ip</strong>
+
+   a. Connecting to Your EC2 Instance
+
+   b. Assigning An Elastic IP
+
+5. <strong>Step 3: Set Up Your Express Server</strong>
+
+   a. Install Node.js
+
+   b. Clone a Repository
+
+   c. Create a .env File
+
+   d. Run Your Server
+   
+   e. Check Your Server Running
+
+6. <strong>Conclusion</strong>
+
+<br />
+<br />
+<br />
+
+## Why use AWS EC2?
+
+After implementing an Express server, you can deploy it on your computer so that other users can access via the internet.
+
+<br />
+
+However, to allow users to access your server 24/7, you would need to keep your computer running continuously.
+
+<br />
+
+It is inefficient to run your computer forever. So, how can you operate a server 24/7 ?
+
+<br />
+
+Using a virtual computer(EC2) from AWS is the solution.
+
+<br />
+<br />
+<br />
+
+## Requirements
+
+- You must have an AWS account to follow with me
+- Basic knowledge of Express and Node.js
+
+<br />
+<br />
+<br />
+
+## Step 1: Set Up Your EC2 Instance
+
+### 1️⃣ Region
+
+When you set up an EC2 instance, you need to choose a region. A region is a specific geographic area where your server will be located. AWS has regions all over the world.
+
+<br />
+
+![region](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926429/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/2_rhdufj.png)
+
+<br />
+<br />
+
+✅ <strong>Why is choosing a region important ?</strong>
+
+1. <strong>Speed:</strong> If your server is closer to your users, your website or app will load faster for them.
+2. <strong>Cost:</strong> Some regions are cheaper than others. You can save money by picking a region with lower coats.
+3. <strong>Laws:</strong> Some regions have specific rules about where data can be stored. Choose the right region to comply
+   with these rules.
+4. <strong>Features:</strong> Different regions may have different features. Make sure the region you choose has what you
+   need.
+
+<br />
+<br />
+
+✅ <strong>How to choose a region ?</strong>
+
+At the top-right corner of the console, you will find a selector for choosing a region. Click on it and pick the region you want.
+
+<br />
+
+![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926430/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/3_nachh3.png)
+
+<br />
+<br />
+<br />
+
+### 2️⃣ Basic Settings For EC2
+
+After selecting your region, it is time to configure the basic settings for your EC2 instance. Follow these steps to set up your instance.
+
+<br />
+
+1. <strong>Launch an EC2 Instance</strong>
+
+   - <strong>Navigate</strong> to the EC2 Dashboard{" "}
+   - <strong>Click "Launch Instance"</strong> to begin creating a new instance. 
+   <img src="https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926430/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/4_kbhj4h.png" width="500" alt="launch instance"/>
+
+<br />
+<br />
+
+2. <strong>Naming Your EC2 Instance</strong>
+   ![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926430/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/5_lcoenu.png)
+
+<br />
+
+Type a name that describes your server. The name should clearly represent the purpose or role of the EC2 instance.
+
+<br />
+<br />
+
+3. <strong>Choose an OS and Amazon Machine Image (AMI)</strong>
+   ![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926431/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/6_dbb9ey.png)
+
+<br />
+
+<strong>An Amazon Machine Image (AMI)</strong> is like a template that includes the operating system and software you need
+to launch your server.
+
+<br />
+
+In this guide, I will use <strong><u>Ubuntu Server 24.04 LTS</u> (Free tier eligible)</strong>
+
+<br />
+<br />
+
+4. <strong>Choose an Instance Type</strong>
+   ![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926432/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/7_cduosa.png)
+
+<br />
+
+The instance type determines <strong>the hardware of the host computer used for your instance.</strong>
+
+<br />
+
+Different instance types offer varying combinations of <strong>CPU, memory, storage, and networking capacity.</strong>
+
+<br />
+
+In this guide, I will use <strong><u>t2.micro</u> (Free tier eligible)</strong>
+
+<br />
+<br />
+
+5. <strong>Create And Use a Key Pair</strong>
+   ![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926432/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/8_fzduk1.png)
+
+<br />
+
+A key pair is like <strong>a lock and key system</strong> for securely connecting to your EC2 instance. It helps ensure that only you can access your server.
+
+<br />
+<br />
+
+✅ <strong>Steps to create and use a key pair</strong>
+
+<ul>
+</ul>
+<img src="https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926433/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/9_kpelwq.png" width="600" alt="create key pair"/>
+
+1. Choose <strong><u>RSA</u></strong> or <strong><u>ED25519</u></strong> (RSA is commonly used and widely supported).
+2. Select the private key file format
+
+   a. <strong><u>.pem</u></strong> for macOS/Linux
+
+   b. <strong><u>.ppk</u></strong> for Windows (used with PuTTY)
+
+3. <strong>Click "Create key pair"</strong> and save this file in a secure location.
+
+<br />
+
+In this guide, I will check <strong>RSA</strong> and <strong>.pem</strong>
+
+<br />
+<br />
+<br />
+
+### 3️⃣ Security Group
+
+A Security Group controls who can connect to your EC2 instance. It acts like a firewall to keep your
+server safe.
+
+<br />
+<br />
+
+1. <strong>Create a New Security Group</strong>
+   <img src="https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926434/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/10_anrixa.png" width="600" alt="create security group"/>
+
+<br />
+<br />
+
+2. <strong>Name Your Security Group</strong>
+   ![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926435/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/11_t0bgra.png)
+
+<br />
+<br />
+
+3. <strong>Set Up Inbound Rules (Allowing traffic in)</strong>
+   ![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926435/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/12_teuhn7.png)
+
+<br />
+
+<strong>SSH (port 22):</strong> This allows you to connect to your instance securely.
+- Type: SSH
+- Protocol: TCP
+- Port Range: 22
+- Source: Anywhere (0.0.0.0/0)
+
+<br />
+
+<strong>HTTP (port 80)</strong>: This allows people to access your website.
+- Type: HTTP
+- Protocol: TCP
+- Port Range: 80
+- Source: Anywhere (0.0.0.0/0)
+
+<br />
+
+If you want to restrict access to a specific address, you can customize the Source Type using an IP address you want.
+
+<br />
+<br />
+
+4. <strong>Set up outbound rules (Allowing traffic out)</strong>
+   - Leave the default settings which allow all outbound traffic.
+
+<br />
+<br />
+
+5. <strong>Review and Create</strong>
+   - Check your Security Group settings.
+   - Click <strong>"Create"</strong> to finish setting up your Security Group.
+
+<br />
+<br />
+<br />
+
+### 4️⃣ Storage
+The storage configuration for your EC2 instance determines how much disk space your server will have.
+
+<br />
+<br />
+
+1. <strong>Review default storage</strong>
+   - The default of 8 GB of General Purpose SSD (gp2) is usually sufficient for basic applications.
+
+<br />
+<br />
+
+2. <strong>Adjust storage size (if needed)</strong>
+   - Increase the size if your application requires more space by entering the desired amount in GB.
+   - <strong>Note:</strong> Free tier eligible customers can get up to 30 GB of EBS storage.
+
+<br />
+
+![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926436/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/13_kzwjiv.png)
+
+<br />
+<br />
+<br />
+
+### 5️⃣ Launch your EC2 server
+Now you are ready to launch your own EC2 server! This is the final step in setting up your instance.
+
+<br />
+
+Make sure all your settings, including the instance type, key pair, security group and storage, are configured correctly.
+
+<br />
+
+![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926437/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/14_dfsoxg.png)
+
+<br />
+<br />
+<br />
+
+## Step 2: Connect to Instance and Setting Up an Elastic IP
+
+<br />
+### 1️⃣ Connecting to your EC2 Instance
+It is time to connect to the EC2 instance you created.
+
+<br />
+
+1. <strong>Select Your Instance</strong>
+   - In the EC2 dashboard, select the instance you want to connect to.
+
+<br />
+
+2. <strong>Click On "Connect"</strong>
+   - Click the <strong>"Connect"</strong> button at the top of the screen.
+   ![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926438/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/15_yfrm5s.png)
+
+<br />
+
+3. <strong>Choose "EC2 Instance Connect"</strong>
+   - In the <strong>"Connect to instance"</strong> tab, select "EC2 Instance Connect"
+
+<br />
+
+4. <strong>Click "Connect"</strong>
+   - Click the <strong>"Connect"</strong> button to open a terminal directly in your browser.
+
+
+<br />
+<br />
+
+### 2️⃣ Set Up an Elastic IP
+Now that your are connected to your instance, it is important to set up an <strong>Elastic IP.</strong>
+
+<br />
+
+The reason to set up an Elastic IP is that <strong>the IP address of an EC2 instance changes whenever the instance restarted.</strong> This happens because IPv4 addresses are limited, and AWS reassigns these addresses to manage them efficiently.
+
+<br />
+
+An Elastic IP gives you a static IP address that stays the same even if you stop and start your instance, ensuring consistent access.
+
+<br />
+<br />
+
+1. <strong>Allocate an Elastic IP address</strong>
+    - Navigate to <strong>"Elastic IPs"</strong> under the <strong>"Network & Security"</strong> section.
+    ![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926439/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/16_gbyz1y.png)
+
+    - Click <strong>"Allocate Elastic IP address"</strong>
+    ![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926439/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/17_gbyz1y.png)
+
+    - Choose <strong>"Amazon's pool of IPv4 addresses"</strong> and click <strong>"Allocate"</strong>
+    ![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926440/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/18_rrydft.png)
+
+<br />
+<br />
+
+2. <strong>Associate the Elastic IP Address With Your Instance</strong>
+    - After allocating the Elastic IP, click "Actions" and select "Associate Elastic IP address"
+     ![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926446/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/19_vfe4uh.png)
+
+    - Choose your instance or network interface.
+    - Select the instance you want to associate the Elastic IP with.
+    - Click "Associate" to bind the Elastic IP address to your EC2 instance.
+
+    <br />
+    ![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926440/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/20_gfu3ph.png)
+
+<br />
+
+After associating, you will see that the public IPv4 address of your instance is now set to the Elastic IP address.
+
+<br />
+
+![thumbnail](https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926445/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/21_g9mc4d.png)
+
+<br />
+<br />
+
+🚨 <strong>Important</strong>: Remember that AWS charges for Elastic IP addresses that are allocated but not associated with a running instance. Make sure to release the Elastic IP if you no longer need it to avoid unnecessary costs.
+
+<br />
+
+By following these steps, you can successfully launch your EC2 instance, connect to it, and set up an Elastic IP for stable and persistent access.
+
+<br />
+<br />
+<br />
+
+## Step 3: Setting Up Your Express Server
+Now that your EC2 instance is running, it is time to set up your Express server. Follow these steps to install Node.js and clone your Express server repository from GitHub.
+
+<br />
+<br />
+
+### 1️⃣ Install Node.js
+Node.js is a JavaScript runtime that allows you to run server-side code. Here is how to install it on your EC2 instance.
+
+<br />
+1. <strong>Switch to the root user</strong>
+
+``` js
+sudo su
+```
+<br />
+
+2. <strong>Install Node.js</strong>
+``` js
+apt-get update && \
+apt-get install -y ca-certificates curl gnupg && \
+mkdir -p /etc/apt/keyrings && \
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+NODE_MAJOR=20 && \
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list && \
+apt-get update && \
+apt-get install nodejs -y
+```
+
+<br />
+
+3. <strong>Verity the installation</strong>
+
+Check the installed versions of Node.js and npm to confirm they are installed correctly
+
+<br />
+
+``` js
+node -v
+npm -v
+```
+
+<br />
+<br />
+
+### 2️⃣ Clone a repository
+Next, you need to clone an Express server repository from GitHub. You can use your own repository or the provided sample project if you don't have one.
+
+<br />
+
+1. <strong>Install Git</strong>
+```js
+sudo apt install git -y
+```
+
+<br />
+
+2. <strong>Clone the repository</strong>
+```js
+git clone https://github.com/mooncastlestone/ec2-test-server
+cd ec2-test-server
+npm i
+```
+
+<br />
+<br />
+
+### 3️⃣ Create a .env File
+Create a .env file and save it.
+
+<br />
+
+```js
+vi .env
+```
+
+<br />
+
+<strong>.env</strong>
+```js
+API_URL = https://api.example.com
+```
+
+<br />
+<br />
+
+### 4️⃣ Run your server
+```js
+node app.js
+```
+
+<br />
+
+If you want to run using pm2, use this commands
+
+<br />
+
+```js
+sudo npm i -g pm2
+sudo pm2 start app.js
+```
+
+<br />
+<br />
+
+### 5️⃣ Check your server running
+Type a public ip of your EC2 instance on the browser.
+
+<br />
+
+<img src="https://res.cloudinary.com/dr4ka7tze/image/upload/v1720926443/%EB%B8%94%EB%A1%9C%EA%B7%B8/AWS_EC2:A_Step_By_Step_Guide/23_e6m8hh.png" width="500" alt="test"/>
+
+<br />
+
+## Conclusion
+
+Congratulations! You have successfully deployed your Express server on an AWS EC2 instance.
+
+<br />
+
+By following this guide, you have set up an EC2 instance, configured it, and deployed an Express server. This setup allows you to scale your application as needed and provides a reliable environment for your server.
+
+<br />
+
+In the next post, I will guide you through <strong>deploying an EC2 instance using a CI/CD pipeline with GitHub Actions.</strong>
+
+<br />
+
+Thank you for following along!
+
+<br />
